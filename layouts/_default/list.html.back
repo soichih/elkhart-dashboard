@@ -1,0 +1,146 @@
+{{ define "main" }}
+
+<div class="home">
+ 
+  <h1> Child protective factors </h1>
+  <div class="row pack">
+    {{ $column := 0 }}
+    {{ $.Scratch.Set "counter" 0 }}
+      {{ range (where .Site.RegularPages "Section" "protective" ).ByParam "order" }}
+          <div class="col-md-3 card">
+           <!-- <a href="{{ .Permalink }}" class="index-anchor">    -->
+      {{ if lt .Params.order 10 }}
+      <h3 class="panel-title">
+      
+      {{ $column := add $column 1 }}
+              {{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
+              {{ $column := ($.Scratch.Get "counter") }}
+              {{ if eq $column 1 }}
+                <div class="panel panel-default" style="background-color:rgb(255, 243, 203)">
+              {{ else }}
+                {{ if eq $column 2 }}
+                  <div class="panel panel-default" style="background-color:rgb(255, 231, 188)">
+                {{ else }}
+                  {{ if eq $column 3 }}
+                    <div class="panel panel-default" style="background-color:rgb(255, 217, 148)">  
+                  {{ else }}  
+                    <div class="panel panel-default" style="background-color:rgb(255, 197, 88)">  
+                      {{ $.Scratch.Set "counter" 0 }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+              <p class="text-center" style="color: #4582ec; font-size: 16pt;">{{ .Title | truncate 150 }}</p>
+              <div class="panel-body" style="min-height: 2px;"></div>
+      </h3>
+      {{ else }}
+              {{ $column := add $column 1 }}
+              {{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
+              {{ $column := ($.Scratch.Get "counter") }}
+              {{ if eq $column 1 }}
+                <div class="panel panel-default" style="background-color:rgb(255, 243, 203)">
+              {{ else }}
+                {{ if eq $column 2 }}
+                  <div class="panel panel-default" style="background-color:rgb(255, 231, 188)">
+                {{ else }}
+                  {{ if eq $column 3 }}
+                    <div class="panel panel-default" style="background-color:rgb(255, 217, 148)">  
+                  {{ else }}  
+                    <div class="panel panel-default" style="background-color:rgb(255, 197, 88)">  
+                      {{ $.Scratch.Set "counter" 0 }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+                {{ if .Params.chart }}
+                  <h1 class="display-1"><p class="text-center"><iframe width="126" height="48" seamless frameborder="0" scrolling="no" src="{{ .Params.chart }}"></iframe></p></h1>
+                {{ else }}
+                  {{ if eq .Params.Color "green1" }}
+                    <h1 class="display-1"> <p class="text-center text-success">{{ .Params.Number }}</p></h1>
+                  {{ end }}
+                  {{ if eq .Params.Color "yellow1" }}
+                    <h1 class="display-1"> <p class="text-center text-warning">{{ .Params.Number }}</p></h1>
+                  {{ end }}
+                  {{ if eq .Params.Color "red1" }}
+                    <h1 class="display-1"> <p class="text-center text-danger">{{ .Params.Number }}</p></h1>
+                  {{ end }}
+                {{ end }}
+                <div class="panel-body" style="min-height: 100px;">
+      <h3 class="panel-title pull-left">
+              {{ if eq .Params.Color "green" }}
+      <p class="text-success">{{ .Title | truncate 150 }}</p>
+                {{ end }}
+                {{ if eq .Params.Color "yellow" }}
+      <p class="text-warning">{{ .Title | truncate 150 }}</p>
+                {{ end }}
+                {{ if eq .Params.Color "red" }}
+      <p class="text-danger">{{ .Title | truncate 150 }}</p>
+                {{ end }}
+                {{ if eq .Params.Color "black" }}
+      <p>{{ .Title | truncate 150 }}</p>
+                {{ end }}
+      </h3><span class="post-meta pull-right"><small>{{ .Date.Format "January 2, 2006" }}</small></span>                  
+      </div>
+                
+                <div class="panel-body"><small>
+                  </small>
+                </div>
+              </div>
+<!--               </a> -->
+        {{ end }}
+          </div>
+      
+        {{ end }}
+  </div>
+
+<h1> Child risk factors </h1>
+<div class="row pack">
+  {{ range (where .Site.RegularPages "Section" "risk" ).ByParam "order" }}
+      <div class="col-md-3 card">
+<!--      <a href="{{ .Permalink }}" class="index-anchor">    -->
+      {{ if lt .Params.order 10 }}
+      <h3 class="panel-title">
+        <p class="text-center" style="color: #4582ec;">{{ .Title | truncate 150 }}</p>
+      <div class="panel-body" style="min-height: 25px;"></div>
+      </h3>
+      {{ else }}
+          <div class="panel panel-default">
+            {{ if .Params.chart }}
+  <h1 class="display-1"><p class="text-center"><iframe width="126" height="48" seamless frameborder="0" scrolling="no" src="{{ .Params.chart }}"></iframe></p></h1>
+            {{ else }}
+          {{ if eq .Params.Color "green1" }}
+              <h1 class="display-1"> <p class="text-center text-success">{{ .Params.Number }}</p></h1>
+            {{ end }}
+            {{ if eq .Params.Color "yellow1" }}
+              <h1 class="display-1"> <p class="text-center text-warning">{{ .Params.Number }}</p></h1>
+            {{ end }}
+            {{ if eq .Params.Color "red1" }}
+              <h1 class="display-1"> <p class="text-center text-danger">{{ .Params.Number }}</p></h1>
+            {{ end }}
+          {{ end }}
+            <div class="panel-body" style="min-height: 100px;">
+  <h3 class="panel-title pull-left">
+          {{ if eq .Params.Color "green" }}
+  <p class="text-success">{{ .Title | truncate 150 }}</p>
+            {{ end }}
+            {{ if eq .Params.Color "yellow" }}
+  <p class="text-warning">{{ .Title | truncate 150 }}</p>
+            {{ end }}
+            {{ if eq .Params.Color "red" }}
+  <p class="text-danger">{{ .Title | truncate 150 }}</p>
+            {{ end }}
+            {{ if eq .Params.Color "black" }}
+  <p>{{ .Title | truncate 150 }}</p>
+            {{ end }}
+  </h3><span class="post-meta pull-right"><small>{{ .Date.Format "January 2, 2006" }}</small></span>                  
+  </div>
+          </div>
+    <!--      </a> -->
+    {{ end }}
+  </div>
+  
+    {{ end }}
+</div> 
+
+
+
+
+{{ end }}

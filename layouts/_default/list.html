@@ -1,0 +1,129 @@
+{{ define "main" }}
+
+<!-- move this to css once done editing-->
+<style>
+.home .column {
+    float: left;
+    width: 260px;
+}
+.home .column h2 {
+    opacity: 0.5;
+    font-size: 14pt;
+    height: 50px;
+}
+.home .column .next {
+    float: right; 
+    font-size: 200%;
+    padding: 0 20px;
+}
+.home .card {
+    background-color: #eee;
+    margin: 10px;
+    padding: 10px;
+    font-size: 10pt;
+}
+.home .card h3  {
+    font-size: 12pt;
+}
+</style>
+
+<div class="home">
+
+    <h1> Child protective factors </h1>
+    <div class="column">
+        <h2>
+            <span class="next">&gt;</span>
+            Social Determinants - Protective
+        </h2>
+        {{ range .Pages }} 
+            {{ if (and (in .Params.tags "protective") (in .Params.tags "social")) }}
+                {{ partial "card.html" . }}
+            {{ end }}
+        {{ end }}
+    </div>
+
+    <div class="column">
+        <h2>
+            <span class="next">&gt;</span>
+            Community Wellness Indicators
+        </h2>
+        {{ range .Pages }} 
+            {{ if (and (in .Params.tags "protective") (in .Params.tags "community")) }}
+                {{ partial "card.html" . }}
+            {{ end }}
+        {{ end }}
+    </div>
+
+    <div class="column">
+        <h2>
+            <span class="next">&gt;</span>
+            Service Utilization - Protective
+        </h2>
+        {{ range .Pages }} 
+            {{ if (and (in .Params.tags "protective") (in .Params.tags "service")) }}
+                {{ partial "card.html" . }}
+            {{ end }}
+        {{ end }}
+    </div>
+
+    <div class="column">
+        <h2>
+            Signs of Success - Protective
+        </h2>
+        {{ range .Pages }} 
+            {{ if (and (in .Params.tags "protective") (in .Params.tags "success")) }}
+                {{ if in .Params.tags "success" }}
+                    {{ partial "card.html" . }}
+                {{ end }}
+            {{ end }}
+        {{ end }}
+    </div>
+
+    <br clear="all">
+
+
+    <h1> Child risk factors </h1>
+    <div class="column">
+        <h2>Social Determinants - Protective</h2>
+        {{ range .Pages }} 
+            {{ if (and (in .Params.tags "risk") (in .Params.tags "social")) }}
+                {{ partial "card.html" . }}
+            {{ end }}
+        {{ end }}
+    </div>
+
+    <div class="column">
+        <h2>Community Wellness Indicators</h2>
+        {{ range .Pages }} 
+            {{ if (and (in .Params.tags "risk") (in .Params.tags "community")) }}
+                {{ partial "card.html" . }}
+            {{ end }}
+        {{ end }}
+    </div>
+
+    <div class="column">
+        <h2>Service Utilization - Protective</h2>
+        {{ range .Pages }} 
+            {{ if (and (in .Params.tags "risk") (in .Params.tags "service")) }}
+                {{ partial "card.html" . }}
+            {{ end }}
+        {{ end }}
+    </div>
+
+    <div class="column">
+        <h2>Signs of Success - Protective</h2>
+        {{ range .Pages }} 
+            {{ if (and (in .Params.tags "risk") (in .Params.tags "success")) }}
+                {{ partial "card.html" . }}
+            {{ end }}
+        {{ end }}
+    </div>
+
+    <br clear="all">
+
+</div> 
+
+
+
+
+{{ end }}
